@@ -16,16 +16,6 @@
 
 ---
 
-## 🧠 Architecture Overview
-
-- **Configs** — JSON templates for static data
-- **Data** — Runtime values and player states
-- **Model** — Logic for morphs and stats computation
-- **API** — Exposed interfaces for other mods
-- **MCM** — Player-facing SkyUI configuration
-
----
-
 ## 🔧 Development Status
 
 - Actively in development.  
