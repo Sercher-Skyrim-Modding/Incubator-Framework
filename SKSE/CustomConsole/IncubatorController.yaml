@@ -1,0 +1,183 @@
+version: 1
+name: IncubatorController
+alias: IFControl
+script: IF_Core_Debug_Global
+help: Console functions for managing container content in IF mod.
+subs:
+- name: Get Object Amount
+  func: getObjectAmount
+  help: Displays the number of specified objects stored in the container.
+  args:
+  - name: objectID
+    type: String
+    required: true
+    help: The ID of the object.
+  - name: containerID
+    type: String
+    required: true
+    help: The ID of the container.
+- name: Get Liquid Amount
+  func: getLiquidAmount
+  help: Displays the amount of specified liquid stored in the container.
+  args:
+  - name: liquidID
+    type: String
+    required: true
+    help: The ID of the liquid.
+  - name: containerID
+    type: String
+    required: true
+    help: The ID of the container.
+- name: Get Object IDs
+  func: getObjectIDs
+  help: Displays all liquid IDs in the specified container.
+  args:
+  - name: containerID
+    type: String
+    required: true
+    help: The ID of the container.
+- name: Get Liquid IDs
+  func: getLiquidIDs
+  help: Displays all object IDs in the specified container.
+  args:
+  - name: containerID
+    type: String
+    required: true
+    help: The ID of the container.
+- name: Get Remaining Capacity
+  func: getRemainingCap
+  help: Shows the remaining capacity of the container.
+  args:
+  - name: containerID
+    type: String
+    required: true
+    help: The ID of the container.
+- name: Get Remaining Capacity Limit
+  func: getRemainingCapLimit
+  help: Shows the remaining capacity including the limit of the container.
+  args:
+  - name: containerID
+    type: String
+    required: true
+    help: The ID of the container.
+- name: Add Object
+  func: addObject
+  help: Attempts to add objects to the container. Returns the number of unplaced objects.
+  args:
+  - name: objectID
+    type: String
+    required: true
+    help: The object ID.
+  - name: containerID
+    type: String
+    required: true
+    help: The container ID.
+  - name: count
+    type: Int
+    required: true
+    help: The number of objects to add.
+  - name: includeLimitCapacity
+    type: Bool
+    required: true
+    help: Whether to include the capacity limit.
+- name: Insert Object
+  func: insertObject
+  help: Forcibly inserts objects into the container. Returns the number of unplaced
+    objects.
+  args:
+  - name: objectID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: count
+    type: Int
+    required: true
+  - name: includeLimitCapacity
+    type: Bool
+    required: true
+- name: Add Liquid
+  func: addLiquid
+  help: Attempts to add liquid to the container. Returns the remaining amount.
+  args:
+  - name: liquidID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: amount
+    type: Float
+    required: true
+  - name: includeLimitCapacity
+    type: Bool
+    required: true
+- name: Insert Liquid
+  func: insertLiquid
+  help: Forcibly inserts liquid into the container. Returns the remaining amount.
+  args:
+  - name: liquidID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: amount
+    type: Float
+    required: true
+  - name: includeLimitCapacity
+    type: Bool
+    required: true
+- name: Remove Object
+  func: removeObject
+  help: Attempts to remove objects from the container. Displays the number not removed.
+  args:
+  - name: objectID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: count
+    type: Int
+    required: true
+- name: Extract Object
+  func: extractObject
+  help: Forcibly extracts objects from the container. Displays the number not extracted.
+  args:
+  - name: objectID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: count
+    type: Int
+    required: true
+- name: Remove Liquid
+  func: removeLiquid
+  help: Attempts to remove liquid from the container. Displays the amount not removed.
+  args:
+  - name: liquidID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: amount
+    type: Float
+    required: true
+- name: Extract Liquid
+  func: extractLiquid
+  help: Forcibly extracts liquid from the container. Displays the amount not extracted.
+  args:
+  - name: liquidID
+    type: String
+    required: true
+  - name: containerID
+    type: String
+    required: true
+  - name: amount
+    type: Float
+    required: true

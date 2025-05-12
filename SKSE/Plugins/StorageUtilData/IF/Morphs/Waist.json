@@ -1,0 +1,9 @@
+{
+  "string": {
+    "morph_name": "Waist"
+  },
+  "float": {
+    "min_value": -1.0,
+    "max_value": 2.5
+  }
+}

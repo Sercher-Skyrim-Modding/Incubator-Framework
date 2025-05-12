@@ -1,0 +1,19 @@
+{
+  "string": {
+    "morphs_pack_name": "birth_hips"
+  },
+  "stringList": {
+    "packs_names": [
+      "Hips",
+      "Butt",
+      "Thighs"
+    ]
+  },
+  "floatList": {
+    "packs_modificators": [
+      1.0,
+      0.7,
+      0.4
+    ]
+  }
+}

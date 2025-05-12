@@ -1,0 +1,36 @@
+{
+  "string": {
+    "name": "spider_egg"
+  },
+  "float": {
+    "volume": 0.25,
+    "size": 0.25,
+    "insertion_size": 0.225,
+    "extraction_size": 0.225
+  },
+  "stringList": {
+    "container_name": [
+      "womb",
+      "stomach",
+      "colon",
+      "breasts",
+      "bladder"
+    ],
+    "morphs_pack_name": [
+      "filled_belly",
+      "filled_belly",
+      "filled_belly",
+      "filled_breasts",
+      "filled_belly"
+    ]
+  },
+  "floatList": {
+    "value": [
+      0.25,
+      0.25,
+      0.25,
+      0.25,
+      0.25
+    ] 
+  }
+}

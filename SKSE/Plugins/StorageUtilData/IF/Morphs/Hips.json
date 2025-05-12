@@ -1,0 +1,9 @@
+{
+  "string": {
+    "morph_name": "Hips"
+  },
+  "float": {
+    "min_value": -1.0,
+    "max_value": 3.5
+  }
+}

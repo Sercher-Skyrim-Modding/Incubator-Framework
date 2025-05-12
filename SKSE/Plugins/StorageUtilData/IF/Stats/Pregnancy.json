@@ -1,0 +1,15 @@
+{
+  "string": {
+    "stat_name": "pregnancy"
+  },
+  "stringList": {
+    "morphs_pack_name": [
+      "birth_hips"
+    ]
+  },
+  "floatList": {
+    "value": [
+      0.75
+    ]
+  }
+}

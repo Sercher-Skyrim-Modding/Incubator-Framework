@@ -1,0 +1,36 @@
+{
+  "string": {
+    "name": "chaurus_egg"
+  },
+  "float": {
+    "volume": 1.0,
+    "size": 1.0,
+    "insertion_size": 0.9,
+    "extraction_size": 0.85
+  },
+  "stringList": {
+    "container_name": [
+      "womb",
+      "stomach",
+      "colon",
+      "breasts",
+      "bladder"
+    ],
+    "morphs_pack_name": [
+      "filled_belly",
+      "filled_belly",
+      "filled_belly",
+      "filled_breasts",
+      "filled_belly"
+    ]
+  },
+  "floatList": {
+    "value": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ] 
+  }
+}

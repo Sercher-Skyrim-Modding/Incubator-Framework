@@ -1,0 +1,9 @@
+{
+  "string": {
+    "morph_name": "BreastGravity"
+  },
+  "float": {
+    "min_value": -0.5,
+    "max_value": 2.5
+  }
+}

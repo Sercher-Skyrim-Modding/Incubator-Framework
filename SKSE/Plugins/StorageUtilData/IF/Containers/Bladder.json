@@ -1,0 +1,17 @@
+{
+  "string": {
+    "name": "bladder"
+  },
+  "float": {
+    "min_capacity": 1.0,
+    "max_capacity": 10.0,
+    "limit_capacity_mod": 5.0,
+    "min_gate_size": 0.5,
+    "max_gate_size": 4.0,
+    "limit_gate_size_mod": 0.5,
+    "capacity_extension_speed": 0.05,
+    "capacity_regeneration_speed": 0.025,
+    "gate_size_extension_speed": 0.05,
+    "gate_size_regeneration_speed": 0.025
+  }
+}

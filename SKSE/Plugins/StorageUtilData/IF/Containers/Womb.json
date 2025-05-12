@@ -1,0 +1,17 @@
+{
+  "string": {
+    "name": "womb"
+  },
+  "float": {
+    "min_capacity": 2.0,
+    "max_capacity": 40.0,
+    "limit_capacity_mod": 5.0,
+    "min_gate_size": 1.0,
+    "max_gate_size": 8.0,
+    "limit_gate_size_mod": 2.0,
+    "capacity_extension_speed": 0.1,
+    "capacity_regeneration_speed": 0.1,
+    "gate_size_extension_speed": 0.15,
+    "gate_size_regeneration_speed": 0.05
+  }
+}

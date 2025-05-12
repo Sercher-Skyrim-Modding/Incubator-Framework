@@ -1,0 +1,15 @@
+{
+  "string": {
+    "morphs_pack_name": "filled_belly"
+  },
+  "stringList": {
+    "packs_names": [
+      "PregnancyBelly"
+    ]
+  },
+  "floatList": {
+    "packs_modificators": [
+      1.0
+    ]
+  }
+}

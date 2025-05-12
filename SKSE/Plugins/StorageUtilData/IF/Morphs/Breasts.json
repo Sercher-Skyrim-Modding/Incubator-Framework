@@ -1,0 +1,9 @@
+{
+  "string": {
+    "morph_name": "Bladder"
+  },
+  "float": {
+    "min_value": -0.5,
+    "max_value": 4.0
+  }
+}

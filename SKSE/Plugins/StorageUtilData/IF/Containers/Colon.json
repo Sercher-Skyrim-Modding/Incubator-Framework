@@ -1,0 +1,17 @@
+{
+  "string": {
+    "name": "colon"
+  },
+  "float": {
+    "min_capacity": 4.0,
+    "max_capacity": 60.0,
+    "limit_capacity_mod": 7.5,
+    "min_gate_size": 1.5,
+    "max_gate_size": 12.0,
+    "limit_gate_size_mod": 3.0,
+    "capacity_extension_speed": 0.15,
+    "capacity_regeneration_speed": 0.1,
+    "gate_size_extension_speed": 0.2,
+    "gate_size_regeneration_speed": 0.15
+  }
+}

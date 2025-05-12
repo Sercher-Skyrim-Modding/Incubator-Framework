@@ -1,0 +1,157 @@
+version: 1
+name: IncubatorData
+alias: IFData
+script: IF_Core_Debug_Global
+help: Console functions for interacting with the IF data layer.
+subs:
+- func: dataReload
+  help: Reinitializes all in-memory data structures.
+  name: Data Reload
+- func: dataUpdateCaches
+  help: Updates all cached values for data storage.
+  name: Data Update Caches
+- args:
+  - help: Container ID to check.
+    name: id
+    required: true
+    type: String
+  func: dataContsSas
+  help: Checks if the specified container exists in the data layer.
+  name: Data Containers Has
+- func: dataContsShowAll
+  help: Displays all container IDs stored in the data layer.
+  name: Data Containers Show All
+- args:
+  - help: The container ID to query.
+    name: containerID
+    required: true
+    type: String
+  func: dataContsGetCap
+  help: Returns the current capacity value of a container.
+  name: Data Containers Get Capacity
+- args:
+  - help: The container ID to modify.
+    name: containerID
+    required: true
+    type: String
+  - help: New capacity value.
+    name: value
+    required: true
+    type: float
+  func: dataContsSetCap
+  help: Sets a new capacity value for a container.
+  name: Data Containers Set Capacity
+- args:
+  - help: The container ID to query.
+    name: containerID
+    required: true
+    type: String
+  func: dataContsGetGate
+  help: Returns the current gate value of a container.
+  name: Data Containers Get Gate
+- args:
+  - help: The container ID to modify.
+    name: containerID
+    required: true
+    type: String
+  - help: New gate value.
+    name: value
+    required: true
+    type: float
+  func: dataContsSetGate
+  help: Sets a new gate value for a container.
+  name: Data Containers Set Gate
+- args:
+  - help: Liquid ID to check.
+    name: id
+    required: true
+    type: String
+  func: dataLiquidsHas
+  help: Checks if the specified liquid exists in the data layer.
+  name: Data Liquids Has
+- func: dataLiquidsShowAll
+  help: Displays all liquid IDs stored in the data layer.
+  name: Data Liquids Show All
+- args:
+  - help: Liquid ID to retrieve.
+    name: liquidID
+    required: true
+    type: String
+  - help: Container ID from which to retrieve the liquid.
+    name: containerID
+    required: true
+    type: String
+  func: dataLiquidsGet
+  help: Returns the current amount of liquid in the specified container.
+  name: Data Liquids Get
+- args:
+  - help: Liquid ID to modify.
+    name: liquidID
+    required: true
+    type: String
+  - help: Target container ID.
+    name: containerID
+    required: true
+    type: String
+  - help: New liquid amount.
+    name: value
+    required: true
+    type: float
+  func: dataLiquidsSet
+  help: Sets the amount of liquid in the specified container.
+  name: Data Liquids Set
+- func: dataObjectsShowAll
+  help: Displays all object instances in the data layer.
+  name: Data Objects Show All
+- args:
+  - help: Object instance ID.
+    name: id
+    required: true
+    type: int
+  func: dataObjectsShow
+  help: Displays details for a specific object instance.
+  name: Data Objects Show
+- args:
+  - help: The ID of the instance to modify.
+    name: instanceID
+    required: true
+    type: int
+  - help: Progress delta to apply.
+    name: delta
+    required: true
+    type: float
+  func: dataObjectsSetProgress
+  help: Sets progress for an object instance.
+  name: Data Objects Set Progress
+- args:
+  - help: Stat ID to check.
+    name: statID
+    required: true
+    type: String
+  func: dataStatsHas
+  help: Checks if a stat exists in the data layer.
+  name: Data Stats Has
+- func: dataStatsShowAll
+  help: Displays all stat IDs stored in the data layer.
+  name: Data Stats Show All
+- args:
+  - help: Stat ID to retrieve.
+    name: statID
+    required: true
+    type: String
+  func: dataStatsGet
+  help: Gets the current value of a stat.
+  name: Data Stats Get
+- args:
+  - help: Stat ID to modify.
+    name: statID
+    required: true
+    type: String
+  - help: New stat value.
+    name: value
+    required: true
+    type: float
+  func: dataStatsSet
+  help: Sets the value of a stat.
+  name: Data Stats Set
+version: 1

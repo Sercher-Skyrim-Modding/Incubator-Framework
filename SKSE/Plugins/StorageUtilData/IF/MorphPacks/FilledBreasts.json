@@ -1,0 +1,19 @@
+{
+  "string": {
+    "morphs_pack_name": "filled_breasts"
+  },
+  "stringList": {
+    "packs_names": [
+      "Breasts",
+      "BreastGravity",
+      "Nipples"
+    ]
+  },
+  "floatList": {
+    "packs_modificators": [
+      1.0,
+      0.4,
+      0.2
+    ]
+  }
+}

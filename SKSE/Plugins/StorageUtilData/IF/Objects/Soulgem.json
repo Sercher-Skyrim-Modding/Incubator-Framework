@@ -1,0 +1,36 @@
+{
+  "string": {
+    "name": "soul_gem"
+  },
+  "float": {
+    "volume": 0.7,
+    "size": 0.7,
+    "insertion_size": 0.4,
+    "extraction_size": 0.4
+  },
+  "stringList": {
+    "container_name": [
+      "womb",
+      "stomach",
+      "colon",
+      "breasts",
+      "bladder"
+    ],
+    "morphs_pack_name": [
+      "filled_belly",
+      "filled_belly",
+      "filled_belly",
+      "filled_breasts",
+      "filled_belly"
+    ]
+  },
+  "floatList": {
+    "value": [
+      0.7,
+      0.7,
+      0.7,
+      0.7,
+      0.7
+    ] 
+  }
+}
