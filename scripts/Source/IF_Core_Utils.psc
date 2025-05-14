@@ -15,3 +15,24 @@ String Function RemoveJsonExt(String file) global
 
     return file
 EndFunction
+
+
+String[] Function GetStringArraySafe(int jArray) global
+    if jArray == 0
+        return None
+    endif
+
+    int count = JArray.count(jArray)
+    if count <= 0
+        return None
+    endif
+
+    String[] result = Utility.CreateStringArray(count)
+    int i = 0
+    while i < count
+        result[i] = JArray.getStr(jArray, i)
+        i += 1
+    endwhile
+
+    return result
+EndFunction
