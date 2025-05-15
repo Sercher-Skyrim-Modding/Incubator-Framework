@@ -30,14 +30,14 @@ Function Initialize()
 EndFunction
 
 Function SyncWithConfig()
-    String[] liquidIDs = ConfigLiquids.GetAllLiquidIDs()
-    if liquidIDs == None
+    int liquidIDs = ConfigLiquids.GetAllLiquidIDs_JArray()
+    if liquidIDs == 0
         return
     endif
 
     int i = 0
-    while i < liquidIDs.Length
-        String id = liquidIDs[i]
+    while i < jArray.count(liquidIDs) 
+        String id = jArray.getStr(liquidIDs, i, "null")
         ; Only register if config still contains this liquid
         if ConfigLiquids.HasLiquid(id)
             if !HasLiquidID(id)
@@ -49,10 +49,10 @@ Function SyncWithConfig()
 EndFunction
 
 Function RemoveObsoleteLiquids()
-    String[] validLiquidIDs = ConfigLiquids.GetAllLiquidIDs()
+    int validLiquidIDs = ConfigLiquids.GetAllLiquidIDs_JArray()
     String[] validContainerIDs = ConfigContainers.GetAllContainerIDs()
 
-    if validLiquidIDs == None || validContainerIDs == None
+    if validLiquidIDs == 0 || validContainerIDs == None
         return
     endif
 
@@ -67,10 +67,10 @@ Function RemoveObsoleteLiquids()
         bool liquidIsValid = false
 
         int li = 0
-        while li < validLiquidIDs.Length
-            if validLiquidIDs[li] == liquidID
+        while li <  jArray.count(validLiquidIDs) 
+            if jArray.getStr(validLiquidIDs, li) == liquidID
                 liquidIsValid = true
-                li = validLiquidIDs.Length
+                li = jArray.count(validLiquidIDs) 
             endif
             li += 1
         endwhile

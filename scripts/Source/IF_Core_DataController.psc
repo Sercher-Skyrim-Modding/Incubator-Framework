@@ -80,11 +80,11 @@ Float Function GetRemainingContainerCapacity(String containerID, Float limitMod 
     Float effectiveCapacity = capacity + limitMod
     Float usedVolume = 0.0
 
-    String[] allLiquidIDs = LiquidConfigs.GetAllLiquidIDs()
-    if allLiquidIDs != None
+    int allLiquidIDs = LiquidConfigs.GetAllLiquidIDs_JArray()
+    if allLiquidIDs != 0
         int i = 0
-        while i < allLiquidIDs.Length
-            String liquidID = allLiquidIDs[i]
+        while i < jArray.count(allLiquidIDs)
+            String liquidID = jArray.getStr(allLiquidIDs, i, "null")
             Float amount = LiquidData.GetAmount_Cached(containerID, liquidID)
             Float volumePerUnit = LiquidConfigs.GetVolume(liquidID)
             usedVolume += amount * volumePerUnit

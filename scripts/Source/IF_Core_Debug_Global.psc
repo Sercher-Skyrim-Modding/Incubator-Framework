@@ -224,9 +224,11 @@ Function dataUpdateCaches() global
     endif
 EndFunction
 
-Function dataContsSas(String id) global
+
+
+Function dataContsHas(String containerID) global
     if Instance() != None
-        Instance().dataContsSas(id)
+        Instance().dataContsHas(containerID)
     endif
 EndFunction
 
@@ -260,9 +262,11 @@ Function dataContsSetGate(String containerID, Float value) global
     endif
 EndFunction
 
-Function dataLiquidsHas(String id) global
+
+
+Function dataLiquidsHas(String liquidID) global
     if Instance() != None
-        Instance().dataLiquidsHas(id)
+        Instance().dataLiquidsHas(liquidID)
     endif
 EndFunction
 
@@ -284,6 +288,8 @@ Function dataLiquidsSet(String liquidID, String containerID, Float value) global
     endif
 EndFunction
 
+
+
 Function dataObjectsShowAll() global
     if Instance() != None
         Instance().dataObjectsShowAll()
@@ -301,6 +307,8 @@ Function dataObjectsSetProgress(Int instanceID, Float delta) global
         Instance().dataObjectsSetProgress(instanceID, delta)
     endif
 EndFunction
+
+
 
 Function dataStatsHas(String statID) global
     if Instance() != None

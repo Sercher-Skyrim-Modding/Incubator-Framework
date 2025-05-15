@@ -1,0 +1,51 @@
+version: 2
+name: IncubatorData2
+alias: ifdata2
+script: IF_Core_Debug_Global
+help: Console functions for interacting with the IF data layer.
+subs:
+- name: ObjectsShowAll
+  alias: osha
+  func: dataObjectsShowAll
+  help: Displays all object instances in the data layer.
+  
+
+  
+- name: StatsHas
+  alias: sh
+  func: dataStatsHas
+  help: Checks if a stat exists in the data layer.
+  args:
+  - name: statID
+    type: String
+    required: true
+    help: Stat ID to check.  
+
+- name: StatsShowAll
+  alias: ssha
+  func: dataStatsShowAll
+  help: Displays all stat IDs stored in the data layer.
+
+- name: StatsGet
+  alias: sg
+  func: dataStatsGet
+  help: Gets the current value of a stat.
+  args:
+  - name: statID
+    type: String
+    required: true
+    help: Stat ID to retrieve.
+
+- name: StatsSet
+  alias: ss
+  func: dataStatsSet
+  help: Sets the value of a stat.
+  args:
+  - name: statID
+    type: String
+    required: true
+    help: Stat ID to modify.
+  - name: value
+    type: float
+    required: true
+    help: New stat amount.

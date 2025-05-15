@@ -1,22 +1,22 @@
 version: 1
 name: IncubatorConfigs
-alias: IFConf
+alias: ifconf
 script: IF_Core_Debug_Global
 help: Console functions to debug and inspect configuration data
 subs:
-- name: ConfigsReload
+- name: Reload
   alias: r
   func: configsReload 
   help: Reloads all configuration files.
 
-- name: ConfigsUpdateCaches
+- name: UpdateCaches
   alias: uc
   func: configsUpdateCaches
   help: Refreshes all internal caches from config data.
 
 
 
-- name: ConfigsContainersShow
+- name: ContainersShow
   alias: csh
   func: configsContainersShow
   help: Displays properties of the specified container from configuration.
@@ -26,14 +26,14 @@ subs:
     required: true
     help: The container ID to inspect.
 
-- name: ConfigsContainersShowAll
+- name: ContainersShowAll
   alias: csha
   func: configsContainersShowAll
   help: Displays all available container IDs from configuration.
 
 
 
-- name: ConfigsLiquidsShow
+- name: LiquidsShow
   alias: lsh
   func: configsLiquidsShow
   help: Displays properties and morph effects of the specified liquid.
@@ -43,14 +43,14 @@ subs:
     required: true
     help: The liquid ID to inspect.
 
-- name: ConfigsLiquidsShowAll
+- name: LiquidsShowAll
   alias: lsha
   func: configsLiquidsShowAll
   help: Displays all available liquid IDs from configuration.
 
 
 
-- name: ConfigsObjectsShow
+- name: ObjectsShow
   alias: osh
   func: configsObjectsShow
   help: Displays properties and morph effects of the specified object.
@@ -60,14 +60,14 @@ subs:
     required: true
     help: The object ID to inspect.
 
-- name: ConfigsObjectsShowAll
+- name: ObjectsShowAll
   alias: osha
   func: configsObjectsShowAll
   help: Displays all available object IDs from configuration.
 
 
 
-- name: ConfigsMorphsShow
+- name: MorphsShow
   alias: msh
   func: configsMorphsShow
   help: Displays the min and max values of the specified morph.
@@ -77,19 +77,19 @@ subs:
     required: true
     help: The morph ID to inspect.
 
-- name: ConfigsMorphsShowAll
+- name: MorphsShowAll
   alias: msha
   func: configsMorphsShowAll
   help: Displays all available morph IDs from configuration.
   
 
 
-- name: ConfigsMorphPacksShowAll
+- name: MorphPacksShowAll
   alias: mpsha
   func: configsMorphPacksShowAll
   help: Displays all available morph pack IDs from configuration.
 
-- name: ConfigsMorphPacksShow
+- name: MorphPacksShow
   alias: mpsh
   func: configsMorphPacksShow
   help: Displays the values of the specified morph pack.
@@ -100,12 +100,12 @@ subs:
     help: The morph pack ID to inspect.
 
 
-- name: ConfigsStatsShowAll
+- name: StatsShowAll
   alias: ssha
   func: configsStatsShowAll
   help: Displays all available stat IDs from configuration.
   
-- name: ConfigsStatsShow
+- name: StatsShow
   alias: ssh
   func: configsStatsShow
   help: Displays the values of the specified stat.

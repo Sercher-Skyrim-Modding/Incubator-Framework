@@ -21,14 +21,14 @@ Function Initialize()
 EndFunction
 
 Function SyncWithConfig()
-    String[] statIDs = ConfigStats.GetAllStatIDs()
-    if statIDs == None
+    int statIDs = ConfigStats.GetAllStatIDs_JArray()
+    if statIDs == 0
         return
     endif
 
     int i = 0
-    while i < statIDs.Length
-        String id = statIDs[i]
+    while i < jArray.count(statIDs)
+        String id = jArray.getStr(statIDs, i, "null")
         if !HasStat(id)
             SetBaseValue(id, 0.0)
         endif
@@ -37,8 +37,8 @@ Function SyncWithConfig()
 EndFunction
 
 Function RemoveObsoleteStats()
-    String[] validIDs = ConfigStats.GetAllStatIDs()
-    if validIDs == None
+    int validIDs = ConfigStats.GetAllStatIDs_JArray()
+    if validIDs == 0
         return
     endif
 
@@ -52,10 +52,10 @@ Function RemoveObsoleteStats()
         String id = allIDs[i]
         bool isValid = false
         int j = 0
-        while j < validIDs.Length
-            if validIDs[j] == id
+        while j < jArray.count(validIDs)
+            if jArray.getStr(validIDs, j) == id
                 isValid = true
-                j = validIDs.Length
+                j = jArray.count(validIDs)
             endif
             j += 1
         endwhile

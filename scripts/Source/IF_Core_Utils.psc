@@ -17,12 +17,12 @@ String Function RemoveJsonExt(String file) global
 EndFunction
 
 
-String[] Function GetStringArraySafe(int jArray) global
-    if jArray == 0
+String[] Function GetStringArraySafe(int jArrayID) global
+    if jArrayID == 0
         return None
     endif
 
-    int count = JArray.count(jArray)
+    int count = JArray.count(jArrayID)
     if count <= 0
         return None
     endif
@@ -30,7 +30,9 @@ String[] Function GetStringArraySafe(int jArray) global
     String[] result = Utility.CreateStringArray(count)
     int i = 0
     while i < count
-        result[i] = JArray.getStr(jArray, i)
+        ConsoleUtil.PrintMessage("[IF Core Utils] jArrayID value before: " + JArray.getStr(jArrayID, i, "null"))
+        result[i] = JArray.getStr(jArrayID, i, "null")
+        ConsoleUtil.PrintMessage("[IF Core Utils] jArrayID value after: " + result[i])
         i += 1
     endwhile
 

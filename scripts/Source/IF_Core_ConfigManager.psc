@@ -36,10 +36,6 @@ Function RefreshAllCaches()
     ContainersStorage.RefreshCache()
 
     MorphPacksStorage.RefreshCache()
-
-    StatsStorage.RefreshCache()
-    ObjectsStorage.RefreshCache()
-    LiquidsStorage.RefreshCache()
 EndFunction
 
 ;==============================

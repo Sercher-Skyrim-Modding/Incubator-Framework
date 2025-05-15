@@ -130,6 +130,21 @@ Int Function GetMorphValuesForContainer_JArray(String id, String containerID)
     return jArrayResult
 EndFunction
 
-String[] Function GetAllLiquidIDs()
-    return JsonUtil.JsonInFolder(DefaultConfigsPath)
+Int Function GetAllLiquidIDs_JArray()
+    String[] fileList = JsonUtil.JsonInFolder(DefaultConfigsPath)
+    if fileList == None
+        return 0
+    endif
+
+    Int result = JArray.object()
+    int i = 0
+    while i < fileList.Length
+        String path = DefaultConfigsPath + fileList[i]
+        String id = JsonUtil.GetStringValue(path, KEY_NAME)
+        JArray.addStr(result, id)
+        i += 1
+    endwhile
+
+    return result
 EndFunction
+

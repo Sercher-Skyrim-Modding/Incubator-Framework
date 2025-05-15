@@ -293,23 +293,21 @@ Function configsLiquidsShow(String id)
         Log("Volume: " + ConfigStorage_Liquids.GetVolume(id))
         
         String[] tContainers = ConfigStorage_Liquids.GetContainers(id)
-        Log("tContainers: " + tContainers)
-        Log("tContainers count: " + tContainers.Length)
         
         if tContainers != None
             int i = 0
             while i < tContainers.Length
                 String tContainer = tContainers[i]
-                String[] morphs = ConfigStorage_Liquids.GetMorphsForContainer(id, tContainer)
-                Float[] values = ConfigStorage_Liquids.GetMorphValuesForContainer(id, tContainer)
+                Int morphs = ConfigStorage_Liquids.GetMorphsForContainer_JArray(id, tContainer)
+                Int values = ConfigStorage_Liquids.GetMorphValuesForContainer_JArray(id, tContainer)
 
-                Log("morphs: " + morphs)
-                Log("values: " + values)
+                ;Log("morphs getStr " + jArray.getStr(morphs, 0))
+                ;Log("values getStr " + jArray.getFlt(values, 0))
 
                 Log("= " + tContainer + " ==========")
                 int j = 0
-                while morphs != None && values != None && j < morphs.Length && j < values.Length
-                    Log("MorphPack: " + morphs[j] + ", Value: " + values[j])
+                while morphs != 0 && values != 0 && j < jArray.count(morphs) && j < jArray.count(values)
+                    Log("MorphPack: " + jArray.getStr(morphs, j, "null") + ", Value: " + jArray.getFlt(values, j, 0.0))
                     j += 1
                 endwhile
                 i += 1
@@ -325,10 +323,10 @@ Function configsLiquidsShowAll()
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    string[] liquidIDs = ConfigStorage_Liquids.GetAllLiquidIDs()
+    int liquidIDs = ConfigStorage_Liquids.GetAllLiquidIDs_JArray()
     int i = 0
-    while (i < liquidIDs.Length)
-        Log((liquidIDs[i] as String) + " was found in configs.") 
+    while (i < jArray.count(liquidIDs))
+        Log(jArray.getStr(liquidIDs, i, "null") + " was found in configs.") 
         i += 1
     endwhile
 EndFunction
@@ -362,13 +360,16 @@ Function configsObjectsShow(String id)
             int i = 0
             while i < tContainers.Length
                 String tContainer = tContainers[i]
-                String[] morphs = ConfigStorage_Objects.GetMorphsForContainer(id, i)
-                Float[] values = ConfigStorage_Objects.GetMorphValuesForContainer(id, i)
+                Int morphs = ConfigStorage_Objects.GetMorphsForContainer_JArray(id, tContainer)
+                Int values = ConfigStorage_Objects.GetMorphValuesForContainer_JArray(id, tContainer)
+
+                ;Log("morphs getStr " + jArray.getStr(morphs, 0))
+                ;Log("values getStr " + jArray.getFlt(values, 0))
 
                 Log("= " + tContainer + " ==========")
                 int j = 0
-                while morphs != None && values != None && j < morphs.Length && j < values.Length
-                    Log("MorphPack: " + morphs[j] + ", Value: " + values[j])
+                while morphs != 0 && values != 0 && j < jArray.count(morphs) && j < jArray.count(values)
+                    Log("MorphPack: " + jArray.getStr(morphs, j, "null") + ", Value: " + jArray.getFlt(values, j, 0.0))
                     j += 1
                 endwhile
                 i += 1
@@ -500,7 +501,22 @@ Function configsStatsShow(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    if (ConfigStorage_Stats.HasStat(id))
+        Log("== " + id + " ======================")
+        
+        Int morphs = ConfigStorage_Stats.GetStatMorphs_JArray(id)
+        Int values = ConfigStorage_Stats.GetStatValues_JArray(id)
+        
+        int j = 0
+        while morphs != 0 && values != 0 && j < jArray.count(morphs) && j < jArray.count(values)
+            Log("MorphPack: " + jArray.getStr(morphs, j, "null") + ", Value: " + jArray.getFlt(values, j, 0.0))
+            j += 1
+        endwhile
+        
+        Log("====================================")
+    else
+        Log(id + " was not found in configs.") 
+    endif
 EndFunction
 
 Function configsStatsShowAll()
@@ -538,83 +554,146 @@ Function dataUpdateCaches()
 EndFunction
 
 
-Function dataContsSas(String id)
+
+Function dataContsHas(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    bool has = DataStorage_Containers.HasContainerID(id)
+    if (has)
+        Log(id + " was found in data.") 
+    else
+        Log(id + " was not found in data.") 
+    endif  
 EndFunction
 
 Function dataContsShowAll()
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    string[] containerIDs = DataStorage_Containers.GetAllContainerIDs()
+    int i = 0
+    while (i < containerIDs.Length)
+        Log((containerIDs[i] as String) + " was found in data.") 
+        i += 1
+    endwhile
 EndFunction
 
-Function dataContsGetCap(String containerID)
+Function dataContsGetCap(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    if (DataStorage_Containers.HasContainerID(id))
+        Log("== " + id + " ======================")
+        Log("Current Capacity: "        + DataStorage_Containers.GetCapacity(id))
+        Log("Current Capacity Cashed: " + DataStorage_Containers.GetCapacity_Cached(id))
+        Log("====================================")
+    else
+        Log(id + " was not found in data.") 
+    endif
 EndFunction
 
-Function dataContsSetCap(String containerID, Float value)
+Function dataContsSetCap(String id, Float value)
+    ConfigManager.RefreshAllCaches()
+    DataManager.UpdateAllCaches() 
+    
+    if (DataStorage_Containers.HasContainerID(id))
+        DataStorage_Containers.SetCapacity(id, value)
+        Log(id + " capacity was set to " + value) 
+    else
+        Log(id + " was not found in data.") 
+    endif
+EndFunction
+
+Function dataContsGetGate(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    if (DataStorage_Containers.HasContainerID(id))
+        Log("== " + id + " ======================")
+        Log("Current Gate Size: "        + DataStorage_Containers.GetGateSize(id))
+        Log("Current Gate Size Cashed: " + DataStorage_Containers.GetGateSize_Cached(id))
+        Log("====================================")
+    else
+        Log(id + " was not found in data.") 
+    endif
 EndFunction
 
-Function dataContsGetGate(String containerID)
+Function dataContsSetGate(String id, Float value)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
-
-    Log("")
+    
+    if (DataStorage_Containers.HasContainerID(id))
+        DataStorage_Containers.SetGateSize(id, value)
+        Log(id + " gase size was set to " + value) 
+    else
+        Log(id + " was not found in data.") 
+    endif
 EndFunction
 
-Function dataContsSetGate(String containerID, Float value)
-    ConfigManager.RefreshAllCaches()
-    DataManager.UpdateAllCaches() 
-
-    Log("")
-EndFunction
 
 
 Function dataLiquidsHas(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    bool has = DataStorage_Liquids.HasLiquidID(id)
+    if (has)
+        Log(id + " was found in data.") 
+    else
+        Log(id + " was not found in data.") 
+    endif  
 EndFunction
 
 Function dataLiquidsShowAll()
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    string[] liquidIDs = DataStorage_Liquids.GetAllLiquidIDs()
+    int i = 0
+    while (i < liquidIDs.Length)
+        Log((liquidIDs[i] as String) + " was found in data.") 
+        i += 1
+    endwhile
 EndFunction
 
-Function dataLiquidsGet(String liquidID, String containerID)
+Function dataLiquidsGet(String id, String containerID)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    if (DataStorage_Liquids.HasLiquidID(id))
+        Log("=== " + id + " ---> " + containerID + " ===")
+        Log("Current Amount: "        + DataStorage_Liquids.GetAmount(id, containerID))
+        Log("====================================")
+    else
+        Log(id + " was not found in " + containerID) 
+    endif
 EndFunction
 
-Function dataLiquidsSet(String liquidID, String containerID, Float value)
+Function dataLiquidsSet(String id, String containerID, Float value)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
-
-    Log("")
+    
+    if (DataStorage_Liquids.HasLiquidID(id))
+        DataStorage_Liquids.SetAmount(id, containerID, value)
+        Log(value + " " + id + " was set to " + value) 
+    else
+        Log(id + " was not found in data.") 
+    endif
 EndFunction
+
 
 
 Function dataObjectsShowAll()
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    string[] objIDs = DataStorage_Objects.GetAllInstanceIDs()
+    int i = 0
+    while (i < objIDs.Length)
+        Log((objIDs[i] as String) + " was found in data.") 
+        i += 1
+    endwhile
 EndFunction
 
 Function dataObjectsShow(Int id)
@@ -631,31 +710,54 @@ Function dataObjectsSetProgress(Int instanceID, Float delta)
     Log("")
 EndFunction
 
-Function dataStatsHas(String statID)
+
+
+Function dataStatsHas(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    bool has = DataStorage_Stats.HasStat(id)
+    if (has)
+        Log(id + " was found in data.") 
+    else
+        Log(id + " was not found in data.") 
+    endif  
+    
 EndFunction
-
 
 Function dataStatsShowAll()
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    string[] statIDs = DataStorage_Stats.GetAllStatIDs()
+    int i = 0
+    while (i < statIDs.Length)
+        Log((statIDs[i] as String) + " was found in data.") 
+        i += 1
+    endwhile
 EndFunction
 
-Function dataStatsGet(String statID)
+Function dataStatsGet(String id)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
 
-    Log("")
+    if (DataStorage_Stats.HasStat(id))
+        Log("== " + id + " ======================")
+        Log("Current Value: "   + DataStorage_Stats.GetBaseValue(id))
+        Log("====================================")
+    else
+        Log(id + " was not found in data.") 
+    endif
 EndFunction
 
-Function dataStatsSet(String statID, Float value)
+Function dataStatsSet(String id, Float value)
     ConfigManager.RefreshAllCaches()
     DataManager.UpdateAllCaches() 
-
-    Log("")
+    
+    if (DataStorage_Stats.HasStat(id))
+        DataStorage_Stats.SetBaseValue(id, value)
+        Log(id + " was set to " + value) 
+    else
+        Log(id + " was not found in data.") 
+    endif
 EndFunction
