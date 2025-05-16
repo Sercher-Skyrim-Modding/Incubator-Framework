@@ -25,6 +25,7 @@ EndFunction
 ; =================================
 Function ResetFull()
 	Reset()
+	
 	String[] tUsed = MorphsModel.GetAllMorphNames()
 	int j = 0
 	while j < tUsed.Length
@@ -63,16 +64,26 @@ EndFunction
 ; ==================================
 Function ApplyMorphs()
     Reset()
+    
 	String[] tMorphs = MorphsModel.GetAllMorphNames()
+	if tMorphs == None
+		ConsoleUtil.PrintMessage("[IF Debug] MorphsView: No morphs to apply")
+		return
+	endif
+	
+	int appliedCount = 0
 	int i = 0
 	while i < tMorphs.Length
 		String tMorph = tMorphs[i]
 		float tValue = MorphsModel.GetMorphValue(tMorph)
-		NiOverride.SetBodyMorph(PlayerREF, tMorph, MorphChannel, tValue)
-
-		String tKey = StoragePrefix + tMorph
-		StorageUtil.SetStringValue(PlayerREF, tKey, "1")
-
+		
+		if tValue != 0.0
+			NiOverride.SetBodyMorph(PlayerREF, tMorph, MorphChannel, tValue)
+			String tKey = StoragePrefix + tMorph
+			StorageUtil.SetStringValue(PlayerREF, tKey, "1")
+			appliedCount += 1
+		endif
+		
 		i += 1
 	endwhile
 EndFunction

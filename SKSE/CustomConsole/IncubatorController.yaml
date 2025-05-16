@@ -1,183 +1,233 @@
 version: 1
 name: IncubatorController
-alias: IFControl
+alias: ifcontrol
 script: IF_Core_Debug_Global
 help: Console functions for managing container content in IF mod.
 subs:
-- name: Get Object Amount
-  func: getObjectAmount
-  help: Displays the number of specified objects stored in the container.
-  args:
-  - name: objectID
-    type: String
-    required: true
-    help: The ID of the object.
-  - name: containerID
-    type: String
-    required: true
-    help: The ID of the container.
-- name: Get Liquid Amount
-  func: getLiquidAmount
-  help: Displays the amount of specified liquid stored in the container.
-  args:
-  - name: liquidID
-    type: String
-    required: true
-    help: The ID of the liquid.
-  - name: containerID
-    type: String
-    required: true
-    help: The ID of the container.
-- name: Get Object IDs
-  func: getObjectIDs
-  help: Displays all liquid IDs in the specified container.
-  args:
-  - name: containerID
-    type: String
-    required: true
-    help: The ID of the container.
-- name: Get Liquid IDs
-  func: getLiquidIDs
-  help: Displays all object IDs in the specified container.
-  args:
-  - name: containerID
-    type: String
-    required: true
-    help: The ID of the container.
-- name: Get Remaining Capacity
+- name: GetRemainingCapacity
+  alias: grc
   func: getRemainingCap
   help: Shows the remaining capacity of the container.
   args:
   - name: containerID
-    type: String
+    type: string
     required: true
     help: The ID of the container.
-- name: Get Remaining Capacity Limit
+
+- name: GetRemainingCapacityLimit
+  alias: grcl
   func: getRemainingCapLimit
   help: Shows the remaining capacity including the limit of the container.
   args:
   - name: containerID
-    type: String
+    type: string
     required: true
     help: The ID of the container.
-- name: Add Object
+
+- name: GetObjectAmount
+  alias: goa
+  func: getObjectAmount
+  help: Displays the number of specified objects stored in the container.
+  args:
+  - name: objectID
+    type: string
+    required: true
+    help: The ID of the object.
+  - name: containerID
+    type: string
+    required: true
+    help: The ID of the container.
+
+- name: GetObjectIDs
+  alias: goi
+  func: getObjectIDs
+  help: Displays all object IDs in the specified container.
+  args:
+  - name: containerID
+    type: string
+    required: true
+    help: The ID of the container.
+
+- name: AddObject
+  alias: ao
   func: addObject
   help: Attempts to add objects to the container. Returns the number of unplaced objects.
   args:
   - name: objectID
-    type: String
+    type: string
     required: true
     help: The object ID.
   - name: containerID
-    type: String
+    type: string
     required: true
     help: The container ID.
   - name: count
-    type: Int
+    type: int
     required: true
     help: The number of objects to add.
   - name: includeLimitCapacity
-    type: Bool
+    type: bool
     required: true
     help: Whether to include the capacity limit.
-- name: Insert Object
+
+- name: InsertObject
+  alias: io
   func: insertObject
-  help: Forcibly inserts objects into the container. Returns the number of unplaced
-    objects.
+  help: Forcibly inserts objects into the container. Returns the number of unplaced objects.
   args:
   - name: objectID
-    type: String
+    type: string
     required: true
+    help: The object ID.
   - name: containerID
-    type: String
+    type: string
     required: true
+    help: The container ID.
   - name: count
-    type: Int
+    type: int
     required: true
+    help: The number of objects to insert.
   - name: includeLimitCapacity
-    type: Bool
+    type: bool
     required: true
-- name: Add Liquid
-  func: addLiquid
-  help: Attempts to add liquid to the container. Returns the remaining amount.
-  args:
-  - name: liquidID
-    type: String
-    required: true
-  - name: containerID
-    type: String
-    required: true
-  - name: amount
-    type: Float
-    required: true
-  - name: includeLimitCapacity
-    type: Bool
-    required: true
-- name: Insert Liquid
-  func: insertLiquid
-  help: Forcibly inserts liquid into the container. Returns the remaining amount.
-  args:
-  - name: liquidID
-    type: String
-    required: true
-  - name: containerID
-    type: String
-    required: true
-  - name: amount
-    type: Float
-    required: true
-  - name: includeLimitCapacity
-    type: Bool
-    required: true
-- name: Remove Object
+    help: Whether to include the capacity limit.
+
+- name: RemoveObject
+  alias: ro
   func: removeObject
   help: Attempts to remove objects from the container. Displays the number not removed.
   args:
   - name: objectID
-    type: String
+    type: string
     required: true
+    help: The object ID.
   - name: containerID
-    type: String
+    type: string
     required: true
+    help: The container ID.
   - name: count
-    type: Int
+    type: int
     required: true
-- name: Extract Object
+    help: The number of objects to remove.
+
+- name: ExtractObject
+  alias: eo
   func: extractObject
   help: Forcibly extracts objects from the container. Displays the number not extracted.
   args:
   - name: objectID
-    type: String
+    type: string
     required: true
+    help: The object ID.
   - name: containerID
-    type: String
+    type: string
     required: true
+    help: The container ID.
   - name: count
-    type: Int
+    type: int
     required: true
-- name: Remove Liquid
+    help: The number of objects to extract.
+
+- name: GetLiquidAmount
+  alias: gla
+  func: getLiquidAmount
+  help: Displays the amount of specified liquid stored in the container.
+  args:
+  - name: liquidID
+    type: string
+    required: true
+    help: The ID of the liquid.
+  - name: containerID
+    type: string
+    required: true
+    help: The ID of the container.
+
+- name: GetLiquidIDs
+  alias: gli
+  func: getLiquidIDs
+  help: Displays all liquid IDs in the specified container.
+  args:
+  - name: containerID
+    type: string
+    required: true
+    help: The ID of the container.
+
+- name: AddLiquid
+  alias: al
+  func: addLiquid
+  help: Attempts to add liquid to the container. Returns the remaining amount.
+  args:
+  - name: liquidID
+    type: string
+    required: true
+    help: The liquid ID.
+  - name: containerID
+    type: string
+    required: true
+    help: The container ID.
+  - name: amount
+    type: float
+    required: true
+    help: The amount of liquid to add.
+  - name: includeLimitCapacity
+    type: bool
+    required: true
+    help: Whether to include the capacity limit.
+
+- name: InsertLiquid
+  alias: il
+  func: insertLiquid
+  help: Forcibly inserts liquid into the container. Returns the remaining amount.
+  args:
+  - name: liquidID
+    type: string
+    required: true
+    help: The liquid ID.
+  - name: containerID
+    type: string
+    required: true
+    help: The container ID.
+  - name: amount
+    type: float
+    required: true
+    help: The amount of liquid to insert.
+  - name: includeLimitCapacity
+    type: bool
+    required: true
+    help: Whether to include the capacity limit.
+
+- name: RemoveLiquid
+  alias: rl
   func: removeLiquid
   help: Attempts to remove liquid from the container. Displays the amount not removed.
   args:
   - name: liquidID
-    type: String
+    type: string
     required: true
+    help: The liquid ID.
   - name: containerID
-    type: String
+    type: string
     required: true
+    help: The container ID.
   - name: amount
-    type: Float
+    type: float
     required: true
-- name: Extract Liquid
+    help: The amount of liquid to remove.
+
+- name: ExtractLiquid
+  alias: el
   func: extractLiquid
   help: Forcibly extracts liquid from the container. Displays the amount not extracted.
   args:
   - name: liquidID
-    type: String
+    type: string
     required: true
+    help: The liquid ID.
   - name: containerID
-    type: String
+    type: string
     required: true
+    help: The container ID.
   - name: amount
-    type: Float
+    type: float
     required: true
+    help: The amount of liquid to extract.

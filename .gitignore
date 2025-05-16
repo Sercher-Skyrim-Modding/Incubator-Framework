@@ -1,0 +1,23 @@
+Mods API/ActorUtil.psc
+Mods API/JArray.psc
+Mods API/JAtomic.psc
+Mods API/JContainers.psc
+Mods API/JContainers_DomainExample.psc
+Mods API/JDB.psc
+Mods API/JFormDB.psc
+Mods API/JFormMap.psc
+Mods API/JIntMap.psc
+Mods API/JLua.psc
+Mods API/JMap.psc
+Mods API/JsonUtil.psc
+Mods API/JString.psc
+Mods API/JValue.psc
+Mods API/MiscUtil.psc
+Mods API/ObjectUtil.psc
+Mods API/PapyrusUtil.psc
+Mods API/StorageUtil.psc
+plan.md
+core/updates.md
+core/todo.md
+core/README.md
+core/configs_and_data.md
